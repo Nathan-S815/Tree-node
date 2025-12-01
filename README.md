@@ -1,46 +1,46 @@
 # 🌳 TreeNode Management API
 
 [![Java](https://img.shields.io/badge/Java-21-blue)](https://www.oracle.com/java/)
- [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-green)](https://spring.io/projects/spring-boot)
- [![License](https://img.shields.io/badge/License-MIT-yellow)](https://chatgpt.com/c/LICENSE)
+[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-green)](https://spring.io/projects/spring-boot)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 A RESTful API built with Spring Boot for managing hierarchical tree nodes.
- Supports creating, moving, deleting nodes, and retrieving descendants with depth information.
+Supports creating, moving, deleting nodes, and retrieving descendants with depth information.
 
-------
+---
 
 ## Table of Contents
 
-- [Features](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#features)
-- [Environment](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#environment)
-- [Installation](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#installation)
-- [Project Structure](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#project-structure)
-- [Database Setup](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#database-setup)
-- [Application Configuration](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#application-configuration)
-- [Tree Visualization](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#tree-visualization)
-- [API Endpoints](https://chatgpt.com/c/692dd216-8efc-8322-86b7-949c08742547#api-endpoints)
+* [Features](#features)
+* [Environment](#environment)
+* [Installation](#installation)
+* [Project Structure](#project-structure)
+* [Database Setup](#database-setup)
+* [Application Configuration](#application-configuration)
+* [Tree Visualization](#tree-visualization)
+* [API Endpoints](#api-endpoints)
 
-------
+---
 
 ## Features
 
-- Create child nodes
-- Delete nodes and their subtrees
-- Move nodes to a new parent (preventing cycles)
-- Retrieve all descendants with depth information
-- Supports modern Java features (JDK21)
-- Transactional operations ensure data consistency
+* Create child nodes
+* Delete nodes and their subtrees
+* Move nodes to a new parent (preventing cycles)
+* Retrieve all descendants with depth information
+* Supports modern Java features (JDK21)
+* Transactional operations ensure data consistency
 
-------
+---
 
 ## Environment
 
-- JDK 21 or higher
-- Maven 3.8+
-- MySQL 8+
-- Spring Boot 3.x
+* JDK 21 or higher
+* Maven 3.8+
+* MySQL 8+
+* Spring Boot 3.x
 
-------
+---
 
 ## Installation
 
@@ -51,20 +51,20 @@ git clone https://github.com/your-repo/treenode.git
 cd treenode
 ```
 
-1. Configure the database (application.yml or application.properties)
-2. Build and run:
+2. Configure the database (application.yml or application.properties)
+3. Build and run:
 
 ```bash
 mvn clean spring-boot:run
 ```
 
-1. Access the API:
+4. Access the API:
 
 ```
-http://localhost:7900/api/nodes
+http://localhost:8080/api/nodes
 ```
 
-------
+---
 
 ## Project Structure
 
@@ -93,7 +93,7 @@ treenode/
 └─ pom.xml
 ```
 
-------
+---
 
 ## Database Setup
 
@@ -112,31 +112,19 @@ CREATE TABLE t_node (
 INSERT INTO t_node (id, name, parent_id) VALUES (1, 'ROOT', NULL);
 ```
 
-------
+---
 
 ## Application Configuration
 
 ```yaml
-server:
-  port: 7900
-spring:
-  datasource:
-    url: jdbc:mysql://127.0.0.0.1:3306/your_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
-    username: 
-    password: ""
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
+spring.datasource.url=jdbc:mysql://localhost:3306/treenode?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
 ```
 
-------
+---
 
 ## Tree Visualization
 
@@ -162,7 +150,7 @@ graph TD
     Node2 --> Node2_1
 ```
 
-------
+---
 
 ## API Endpoints
 
